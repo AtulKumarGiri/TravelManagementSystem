@@ -14,18 +14,6 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <!-- Main Links -->
-                <li class="nav-item">
-                    <a class="nav-link ajax-link text-white fw-medium px-3 text-uppercase" href="{{ url('/about') }}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ajax-link text-white fw-medium px-3 text-uppercase" href="{{ url('/services') }}">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ajax-link text-white fw-medium px-3 text-uppercase" href="{{ url('/contact') }}">Contact</a>
-                </li>
-
                 <!-- Packages Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link ajax-link dropdown-toggle text-white fw-medium px-3 text-uppercase" href="#" id="packagesDropdown"
@@ -62,6 +50,20 @@
                     <ul class="dropdown-menu shadow-lg border-0 rounded-3" aria-labelledby="joinDropdown">
                         <li><a class="dropdown-item" href="{{ route('register') }}">Become Partner</a></li>
                         <li><a class="dropdown-item" href="{{ route('register') }}">Become Supplier</a></li>
+                    </ul>
+                </li>
+
+                
+                <!-- MORE DROPDOWN ITEMS -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link ajax-link dropdown-toggle text-white fw-medium px-3 text-uppercase" href="#" id="moreDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        More
+                    </a>
+                    <ul class="dropdown-menu shadow-lg border-0 rounded-3" aria-labelledby="moreDropdown">
+                        <li><a class="dropdown-item" href="{{ url('/about') }}">About</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/services') }}">Services</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact</a></li>
                     </ul>
                 </li>
             </ul>
