@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->boolean('is_active')->default(true);        
+
             $table->string('role')->default('customer'); // role column for middleware
             $table->rememberToken();
             $table->timestamps();

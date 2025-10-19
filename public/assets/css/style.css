@@ -1,26 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumar+One&family=Mea+Culpa&family=Quintessential&family=Rampart+One&family=Rubik+Vinyl&display=swap');.travel-heading {
-    font-size: 6rem; /* Bigger letters */
+@import url('https://fonts.googleapis.com/css2?family=Kumar+One&family=Mea+Culpa&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Quintessential&family=Rampart+One&family=Rubik+Vinyl&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+.travel-heading {
+    font-size: 6rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 h1 span.letter{
     font-size: 6rem;
     text-transform: uppercase;
     line-height: 1;
-    font-family: "Quintessential", serif;
-    font-weight: 600;
+    font-family: "Playfair", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
     font-style: normal;
 }
 
 
 .letter, .letter-space {
     display: inline-block;
-    width: 6rem;  /* match font-size */
+    width: 6rem; 
     height: 10rem;
-    margin-right: -1.2rem; /* horizontal overlap */
-    margin-bottom: -1rem; /* vertical overlap */
+    margin-right: -1.2rem;
+    margin-bottom: -1rem;
     background-size: cover;
     background-position: center;
     color: transparent;
@@ -31,22 +40,19 @@ h1 span.letter{
     text-shadow: -5px 7px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Auto stagger delays for wave effect (using nth-child) */
 .letter:nth-child(n) {
     animation-delay: calc(var(--i) * 0.1s);
 }
 
-/* Spaces should not animate */
 .letter-space {
-    width: 3rem; /* wider for overlapping effect */
+    width: 3rem; 
     background: none;
     animation: none;
 }
 
-/* Smooth wave keyframes */
 @keyframes wave {
     0%, 100% { transform: translateY(0); }
-    25% { transform: translateY(-15px); } /* bigger float amplitude */
+    25% { transform: translateY(-15px); }
     50% { transform: translateY(0); }
     75% { transform: translateY(15px); }
 }
@@ -59,11 +65,11 @@ h1 span.letter{
 
 #page-plane {
     position: fixed;
-    bottom: -50px; /* start off-screen */
+    bottom: -50px; 
     right: -50px;
     font-size: 3rem;
     z-index: 9999;
-    pointer-events: none; /* avoid clicking */
+    pointer-events: none;
     transform: rotate(-45deg);
     opacity: 0;
     transition: opacity 0.3s;
@@ -80,3 +86,22 @@ h1 span.letter{
     }
 }
 
+.form-control:focus {
+        border-color: #fff;
+        box-shadow: 0 0 0 0.2rem rgba(110,142,251,0.25);
+        background-color: rgba(255,255,255,0.1);
+        color: #fff;
+    }
+
+    .form-floating label {
+        color: rgba(255,255,255,0.7);
+    }
+
+    .form-floating input::placeholder, .form-floating textarea::placeholder {
+        color: transparent;
+    }
+
+    .card ul li:hover {
+        transform: translateX(5px);
+        transition: 0.3s;
+    }

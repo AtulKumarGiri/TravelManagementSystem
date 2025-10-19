@@ -1,4 +1,5 @@
-
+@extends('layouts.app')
+@section('content')
 <div class="container py-5">
     <h2 class="mb-4 text-center text-primary">About Travel Management System</h2>
 
@@ -19,3 +20,4 @@
         <a href="{{ url('/contact') }}" class="btn btn-outline-primary shadow-sm">Contact Us</a>
     </div>
 </div>
+@endsection

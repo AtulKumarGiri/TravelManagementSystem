@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <div class="container py-5">
     <h1 class="text-center mb-5 fw-bold">Get in Touch</h1>
 
@@ -71,25 +73,4 @@ document.getElementById('contact-form')?.addEventListener('submit', function(e){
     alert('Thank you! Your message has been sent.');
 });
 </script>
-
-<style>
-    .form-control:focus {
-        border-color: #fff;
-        box-shadow: 0 0 0 0.2rem rgba(110,142,251,0.25);
-        background-color: rgba(255,255,255,0.1);
-        color: #fff;
-    }
-
-    .form-floating label {
-        color: rgba(255,255,255,0.7);
-    }
-
-    .form-floating input::placeholder, .form-floating textarea::placeholder {
-        color: transparent;
-    }
-
-    .card ul li:hover {
-        transform: translateX(5px);
-        transition: 0.3s;
-    }
-</style>
+@endsection

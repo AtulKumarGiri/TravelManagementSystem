@@ -1,108 +1,34 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ucfirst($role) }} Login - Travel Management System</title>
+@extends('layouts.app')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('content')
+<style>
+    body, html { height: 100%; margin:0; font-family: 'Nunito', sans-serif; }
+    .bg-animated { position: fixed; width:100%; height:100%; background: linear-gradient(135deg, {{ $colors['start'] }}, {{ $colors['end'] }}); background-size: 400% 400%; animation: gradientBG 15s ease infinite; z-index:-1; }
+    @keyframes gradientBG { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+    .login-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-radius:20px; padding:40px; width:400px; max-width:90%; box-shadow:0 10px 40px rgba(0,0,0,0.25); text-align:center; position:relative; z-index:1; animation: fadeIn 1.2s ease forwards; }
+    @keyframes fadeIn {0%{opacity:0; transform:translateY(-20px);}100%{opacity:1; transform:translateY(0);} }
+    .btn-gradient { background: linear-gradient(to right, {{ $colors['button_start'] }}, {{ $colors['button_end'] }}); color:#fff; font-weight:600; border:none; transition: all 0.3s ease; }
+    .btn-gradient:hover { opacity:0.9; }
+</style>
 
-    <style>
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, {{ $colors['start'] }}, {{ $colors['end'] }});
-        }
-
-        .login-card {
-            width: 500px;
-            border-radius: 1rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            padding: 2rem;
-            background-color: #fff;
-        }
-
-        .login-card h2 {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .login-card p {
-            color: #6c757d;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, {{ $colors['button_start'] }}, {{ $colors['button_end'] }});
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(90deg, {{ $colors['button_end'] }}, {{ $colors['button_start'] }});
-        }
-    </style>
-</head>
-<body>
-
-    <div class="login-card">
-        <div class="text-center mb-4">
-            <h2>{{ ucfirst($role) }} Login</h2>
-            <p>Enter your credentials to access your dashboard</p>
-        </div>
-
-        <form method="POST" action="{{ route($role . '.login.submit') }}">
+<div class="bg-animated"></div>
+<div style="display:flex; justify-content:center; align-items:center; height:100vh;">
+    <div class="login-card text-dark">
+        <h2 class="mb-4">{{ ucfirst($role) }} Login</h2>
+        @if($errors->any())
+            <div style="color:red;margin-bottom:15px;">{{ $errors->first() }}</div>
+        @endif
+        <form method="POST" action="{{ route('login.submit') }}">
             @csrf
-
-            <!-- Email -->
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" 
-                       class="form-control @error('email') is-invalid @enderror" 
-                       id="email" 
-                       name="email" 
-                       value="{{ old('email') }}" 
-                       required autofocus
-                       placeholder="{{ $role }}@example.com">
-                @error('email')
-                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                @enderror
+            <input type="hidden" name="role" value="{{ $role }}">
+            <div style="margin-bottom:15px;">
+                <input type="email" name="email" placeholder="Email" class="form-control text-dark" required>
             </div>
-
-            <!-- Password -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" 
-                       class="form-control @error('password') is-invalid @enderror" 
-                       id="password" 
-                       name="password" 
-                       required
-                       placeholder="Enter your password">
-                @error('password')
-                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                @enderror
+            <div style="margin-bottom:15px;">
+                <input type="password" name="password" placeholder="Password" class="form-control text-dark" required>
             </div>
-
-            <!-- Remember Me -->
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label class="form-check-label" for="remember">
-                    Remember Me
-                </label>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="d-grid mb-3">
-                <button type="submit" class="btn btn-primary btn-lg fw-bold">
-                    Login
-                </button>
-            </div>
+            <button type="submit" class="btn btn-gradient w-100">Login</button>
         </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+@endsection

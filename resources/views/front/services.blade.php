@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <div class="container py-5">
     <h1 class="text-center mb-5 fw-bold">Our Services</h1>
 
@@ -33,3 +35,4 @@
         </div>
     </div>
 </div>
+@endsection

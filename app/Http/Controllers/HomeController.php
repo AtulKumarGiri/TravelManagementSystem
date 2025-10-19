@@ -6,38 +6,25 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        // Remove auth if you want public pages accessible without login
-        // $this->middleware('auth');
+        // public pages
     }
 
-    /**
-     * Display the requested page.
-     *
-     * @param string $page
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function show($page = 'home')
-    {
-        $allowedPages = ['home', 'about', 'services', 'contact', 'terms', 'privacy', 'cancellation', 'operations'];
+{
+    $allowedPages = ['home','about','services','contact','terms','privacy','cancellation','operations'];
 
-        if (!in_array($page, $allowedPages)) {
-            abort(404);
-        }
-
-        $view = view("front.$page");
-
-        if (request()->ajax()) {
-            return $view->render();
-        }
-
-        return view('layouts.app')->with('content', $view->render());
+    if (!in_array($page, $allowedPages)) {
+        abort(404);
     }
+
+    if (request()->ajax()) {
+        // Return only the section content for AJAX
+        return view("front.$page")->renderSections()['content'] ?? '';
+    }
+
+    return view("front.$page"); // normal page load
+}
 
 }
